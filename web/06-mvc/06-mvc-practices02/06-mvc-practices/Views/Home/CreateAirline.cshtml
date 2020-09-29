@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateAirline</title>
+</head>
+<body>
+
+    <h1>Contact</h1>
+
+    <form action="@Url.Action("CreateAirlinePost")" method="post">
+        <div>
+            <span>Name: </span>
+            <input type="text" name="name" />
+        </div>
+
+        <div>
+            <span>Count of aircrafts: </span>
+            <input type="text" name="AircraftCount" />
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="IsLowcost" value="true" />
+            <label class="form-check-label" for="exampleCheck1">Lowcost</label>
+        </div>
+
+        <div>
+            <span>Maximum luggage weight</span>
+            <input type="text" name="MaximumLuggageWeight" />
+        </div>
+        <input type="submit" value="Create airline" />
+    </form>
+
+</body>
+</html>

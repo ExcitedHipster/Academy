@@ -1,0 +1,5 @@
+Start date of the game: 1/21/2020 9:29:24 PM
+Total amount of questions: 2
+Total amount of right answers: 1
+Total amount of wrong answers: 1
+The amount of money that the player took: 0

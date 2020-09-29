@@ -1,0 +1,1 @@
+CREATE INDEX IXProductMfr ON Product (ProductMfr)

@@ -1,0 +1,91 @@
+http://dummy.restapiexample.com/api/v1/create
+
+	{"name":"Grigoli","salary":"12233","age":"18"}
+
+
+{
+    "status": "success",
+    "data": {
+        "name": "Grigoli",
+        "salary": "12233",
+        "age": "18",
+        "id": 79
+    }
+}
+
+
+
+http://dummy.restapiexample.com/api/v1/create
+
+	{"name":"Grigoli","salary":"100","age":"25"}
+
+{
+    "status": "success",
+    "data": {
+        "name": "Grigoli",
+        "salary": "100",
+        "age": "25",
+        "id": 92
+    }
+}
+
+
+
+
+http://dummy.restapiexample.com/api/v1/create
+
+	{"name":"Grigoli","salary":"100000","age":"80"}
+
+{
+    "status": "success",
+    "data": {
+        "name": "Grigoli",
+        "salary": "100000",
+        "age": "80",
+        "id": 73
+    }
+}
+
+
+
+http://dummy.restapiexample.com/api/v1/employee/79
+
+
+{
+    "status": "success",
+    "data": {
+        "employee_name": "Grigoli",
+        "employee_salary": "12233",
+        "employee_age": "18",
+        "id": 79
+    }
+}
+
+
+
+	http://dummy.restapiexample.com/api/v1/employee/92
+
+
+{
+    "status": "success",
+    "data": {
+        "employee_name": "Grigoli",
+        "employee_salary": "100",
+        "employee_age": "25",
+        "id": 92
+    }
+}
+
+
+
+	http://dummy.restapiexample.com/api/v1/employee/73
+
+{
+    "status": "success",
+    "data": {
+        "employee_name": "Grigoli",
+        "employee_salary": "100000",
+        "employee_age": "80",
+        "id": 73
+    }
+}

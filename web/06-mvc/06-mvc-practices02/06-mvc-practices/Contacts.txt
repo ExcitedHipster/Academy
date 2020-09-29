@@ -1,0 +1,5 @@
+Contact Name: Nika,	 Phone: 23466564,	 Position: freelancer,	 Salary: 1242345 
+Contact Name: Gio,	 Phone: 341326635,	 Position: freelancer,	 Salary: 1242345 
+Contact Name: Luka,	 Phone: 24645767,	 Position: freelancer,	 Salary: 1242345 
+Contact Name: Nikaa,	 Phone: +569851,	 Position: Director,	 Salary: 2000 
+Contact Name: guu,	 Phone: 890,	 Position: Seller,	 Salary: 600 

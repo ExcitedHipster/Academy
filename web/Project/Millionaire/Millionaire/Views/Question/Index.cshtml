@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Millionaire.Models.Question>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Management</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Question
+            </th>
+            <th>
+                Option
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    Question @(Model.ToList().IndexOf(item) + 1)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

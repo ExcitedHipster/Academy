@@ -1,0 +1,54 @@
+﻿@model Millionaire.Models.Question
+@{
+    ViewData["Title"] = "Game";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h5>Question @Model.Id </h5>
+
+    <div>
+
+        <tt class="col-sm-2">
+            @Model.QuestionContent
+        </tt>
+
+        <hr />
+
+
+        <a>@Html.ActionLink("A", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[0].IsRight }))  @Model.Answers[0].AnswerContent</a>
+
+
+        <hr />
+
+
+        <a>@Html.ActionLink("B", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[1].IsRight }))  @Model.Answers[1].AnswerContent</a>
+
+
+        <hr />
+
+
+        <a>@Html.ActionLink("C", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[2].IsRight }))  @Model.Answers[2].AnswerContent</a>
+
+
+
+        <hr />
+
+        <a>@Html.ActionLink("D", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[3].IsRight }))  @Model.Answers[3].AnswerContent</a>
+
+        <hr />
+        <hr />
+        <hr />
+
+        <a>@Html.ActionLink("50:50", "TipAction", "Game", new Tip { FiftyFifty = true, Audience = false, Friend = false })</a>&nbsp;
+        <a>@Html.ActionLink("Adience", "TipAction", "Game", new Tip { FiftyFifty = false, Audience = true, Friend = false })</a>&nbsp;
+        <a>@Html.ActionLink("Friend", "TipAction", "Game", new Tip { FiftyFifty = false, Audience = false, Friend = true })</a>
+
+        <hr />
+
+        <a>@Html.ActionLink("History", "HistoryView", "Game", new History { CorrectAnswers = Model.Id-1, Money = 0, StartDate = DateTime.Now })</a>
+        <a>@Html.ActionLink(@Model.TakeMoney, "TakeMoneyView", "Game")</a>
+    </div>
+
+    <h3>@Model.suggestion</h3>
+
+

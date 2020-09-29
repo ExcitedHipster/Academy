@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout - Create.cshtml";
+}
+
+@model AccountInfo
+
+<h1>Registration</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAccountPost">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="UserName" class="form-control" placeholder="UserName" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">               
+                <input asp-for="Password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <select asp-for="CodeQuestion" class="custom-select" style="width:350px;">
+
+                <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                <option value="What is your favorite color?">What is your favorite color?</option>
+                <option value="What town were you born in?">What town were you born in?</option>
+                <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+
+            </select>
+            <p></p>
+            <span asp-validation-for="CodeQuestion" class="text-danger"></span>
+            <div class="form-group">
+                <input asp-for="CodeAnswear" class="form-control" placeholder="Answer"  />
+                <span asp-validation-for="CodeAnswear" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Register" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<h1>Welcome to Planner Menu</h1>
+<hr />
+<h3>please choose option</h3>
+<div class="text-center">
+    <<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow-1">
+            <hr />
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Planner" asp-action="Index" style="color:brown"><h4>All Plans</h4></a>
+            </li>
+            <hr />
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Planner" asp-action="Create" style="color:brown"><h4>Create new plan</h4></a>
+            </li>
+            <hr />
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Planner" asp-action="FuturePlans" style="color:brown"><h4>Future Plans</h4></a>
+            </li>
+        </ul>
+    </div>
+</div>

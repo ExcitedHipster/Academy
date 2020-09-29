@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Planner.Models.EventPlanning>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Plans List</h1>
+
+<p>
+    <a asp-action="Create">Create New Plan</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Start Time
+            </th>
+            <th>
+                End Time
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @item.StartTime.ToShortTimeString()
+            </td>
+            <td>
+                @item.EndTime.ToShortTimeString()
+            </td>
+            <td>
+                @{var duration = Convert.ToInt32(item.EndTime.Subtract(item.StartTime).TotalMinutes);
+                    string display = "";
+                            if(duration/60 > 0) display += $"{duration / 60} Hours"; 
+                            if (duration%60 > 0) display+=$"{duration % 60} Minutes";
+                }
+                @display
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

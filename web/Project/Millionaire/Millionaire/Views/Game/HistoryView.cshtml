@@ -1,0 +1,24 @@
+﻿@model Millionaire.Models.History
+@{
+    ViewData["Title"] = "HistoryView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>History</h1>
+<hr />
+<hr />
+
+<h4>Correct answers: </h4>
+@Model.CorrectAnswers
+<h4>Money won: </h4>@Model.Money
+<h4>Start Date: </h4>@Model.StartDate.Year:@Model.StartDate.Month:@Model.StartDate.Day
+
+<hr />
+<hr />
+<hr />
+
+<a>@Html.ActionLink(Model.ReturnGamePage, "Game", "Game")</a>
+<a>@Html.ActionLink(Model.ReturnWonPage, "TakeMoneyView", "Game")</a>
+<a>@Html.ActionLink(Model.ReturnLostPage, "Lost", "Game")</a>
+
+

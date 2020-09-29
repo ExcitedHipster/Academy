@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to our Game Store</h1>
+</div>
+
+<div>
+    <a href="@Url.Action("Index","Game")">List of games</a>
+    <hr />
+    <a href="@Url.Action("Created","Game")">Add a  new game</a>
+</div>

@@ -1,0 +1,19 @@
+﻿@model Millionaire.Models.History
+<h1>You Lost</h1>
+<h3>Try another time</h3>
+
+<hr />
+<hr />
+
+<a>@Html.ActionLink("History", "HistoryView", "Game", new History
+{
+    CorrectAnswers = Model.CorrectAnswers,
+    Money = 0,
+    StartDate = DateTime.Now,
+    ReturnGamePage = "",
+    ReturnLostPage = "Back"
+})<a>
+
+<hr />
+
+<a>@Html.ActionLink("Return to home page", "Index", "Home")</a>

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model AccountInfo
+
+<h1>Registration</h1>
+
+<hr />
+
+<a href="~/Home/Create" class="btn btn-primary">Create Account</a>
+
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

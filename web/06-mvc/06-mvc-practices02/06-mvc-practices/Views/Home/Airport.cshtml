@@ -1,0 +1,17 @@
+﻿@model IEnumerable<_06_mvc_practices.Models.Airport>
+<h1>Airport Index</h1>
+<table>
+    <tr>
+        <td>Name</td>
+        <td>City</td>
+        <td>IsInternational</td>
+    </tr>
+    @foreach (var airport in Model)
+    {
+<tr>
+    <td>@airport.Name</td>
+    <td>@airport.City</td>
+    <td>@airport.IsInternational</td>
+</tr>
+    }
+</table>

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<_06_mvc_practices.Models.Airline>
+<h1>Airline Index</h1>
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Aircraft Count</td>
+        <td>Lowcost</td>
+        <td>MaximumLuggageWeight</td>
+    </tr>
+    @foreach (var airline in Model)
+    {
+<tr>
+    <td>@airline.AirlineName</td>
+    <td>@airline.AircraftCount</td>
+    <td>@airline.IsLowcost</td>
+    <td>@airline.MaximumLuggageWeight</td>
+</tr>
+    }
+</table>

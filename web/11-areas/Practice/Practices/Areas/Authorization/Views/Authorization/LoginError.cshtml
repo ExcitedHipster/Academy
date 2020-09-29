@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout - Login.cshtml";
+}
+@model AccountInfo
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="LoginPost">
+
+            <div class="form-group">
+                <input asp-for="UserName" class="form-control" placeholder="UserName" />
+            </div>
+            <div class="form-group">
+                <input asp-for="Password" class="form-control" placeholder="Password" />
+            </div>
+
+            <p style="color:red">Username or Password is inccorect</p>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="LogIn" />
+            </div>
+        </form>
+    </div>
+</div>
+
