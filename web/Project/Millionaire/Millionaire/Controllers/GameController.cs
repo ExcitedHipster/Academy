@@ -17,32 +17,38 @@ namespace Millionaire.Controllers {
         public static Tip TipsIndicator = new Tip { FiftyFifty = false, Friend = false, Audience = false };
         public static int id = 1, ind = 1;
         public static History _History = new History();
+        public  Question question = new Question (); 
         public GameController(IQuestionService questionService) {
             _questionService = questionService;
             _logger = LogManager.GetCurrentClassLogger();
+            this.question = _questionService.GetQuestion().SingleOrDefault(x => x.Id == id);
+            
         }
 
 
         public IActionResult Game() {
 
+            this.question.TipsIndicator[0] = CurrentTips.FiftyFifty;
+            this.question.TipsIndicator[1] = CurrentTips.Audience;
+            this.question.TipsIndicator[2] = CurrentTips.Friend;
 
             _logger.Info("Game Invoked");
-            var question = _questionService.GetQuestion().SingleOrDefault(x => x.Id == id);
+            
 
             if (id <= 6)
             {
-                if (id > 3) question.TakeMoney = "TakeMoney";
+                if (id > 3) this.question.TakeMoney = "TakeMoney";
 
                 id++;
 
-                if (ind == 1) QuestionRepository.Randomize(question);
+                if (ind == 1) QuestionRepository.Randomize(this.question);
 
-                TipsImplementation.GetTip(question);
+                TipsImplementation.GetTip(this.question);
             }
 
             id--;
 
-            return View(question);
+            return View(this.question);
         }
 
         public IActionResult Lost() {
@@ -72,22 +78,33 @@ namespace Millionaire.Controllers {
                 _logger.Info(" tip Invoked");
 
                 ind = 0;
-                if (tip.FiftyFifty && CurrentTips.FiftyFifty)
+                if (tip.FiftyFifty)
                 {
-                    CurrentTips.FiftyFifty = false;
-                    TipsIndicator.FiftyFifty = true;
+                    if (CurrentTips.FiftyFifty)
+                    {
+                        CurrentTips.FiftyFifty = false;
+                        TipsIndicator.FiftyFifty = true;
+                    }
+                    else this.question.suggestion = null;
                 }
 
-                if (tip.Audience && CurrentTips.Audience)
+                if (tip.Audience )
                 {
-                    CurrentTips.Audience = false;
-                    TipsIndicator.Audience = true;
+                    if (CurrentTips.Audience) {
+                        CurrentTips.Audience = false;
+                        TipsIndicator.Audience = true;
+                    }
+                    else this.question.suggestion = null;
                 }
 
-                if (tip.Friend && CurrentTips.Friend)
+                if (tip.Friend)
                 {
-                    CurrentTips.Friend = false;
-                    TipsIndicator.Friend = true;
+                    if (CurrentTips.Friend)
+                    {
+                        CurrentTips.Friend = false;
+                        TipsIndicator.Friend = true;
+                    }
+                    else this.question.suggestion = null;
                 }
                 return RedirectToAction(nameof(Game));
             }

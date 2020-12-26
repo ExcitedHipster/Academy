@@ -4,20 +4,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Congrats you won</h1>
 
-<hr />  
-<hr />
+<QuestionBox>
+    <h1>Congrats you won</h1>
 
-<a>@Html.ActionLink("History", "HistoryView", "Game", new History
-{
-    CorrectAnswers = Model.CorrectAnswers,
-    Money = Model.Money,
-    StartDate = Model.StartDate,
-    ReturnGamePage = "",
-    ReturnWonPage = "Back"
-})</a>
+    
 
-<hr />  
+    <emoji><img src="~/css/congrats.png" /></emoji>
+    
 
-<a>@Html.ActionLink("Return to home page", "Index", "Home")</a>
+    <tipButton>
+        @Html.ActionLink("History", "HistoryView", "Game", new History
+ {
+     CorrectAnswers = Model.CorrectAnswers,
+     Money = Model.Money,
+     StartDate = Model.StartDate,
+     ReturnGamePage = "",
+     ReturnWonPage = "Back"
+ })
+    </tipButton>
+
+    <hr />
+
+    <tipButton>@Html.ActionLink("Return to home page", "Index", "Home")</tipButton>
+
+</QuestionBox>

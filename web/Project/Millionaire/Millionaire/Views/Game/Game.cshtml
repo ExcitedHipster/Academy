@@ -2,53 +2,102 @@
 @{
     ViewData["Title"] = "Game";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-    <h5>Question @Model.Id </h5>
 
-    <div>
+<!DCTYPE html>
 
-        <tt class="col-sm-2">
-            @Model.QuestionContent
-        </tt>
+    <html xmlns="http://www.org/1999/xhtml">
+    <head runat="server">
 
-        <hr />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
+        <link href="Game/Game.css" rel="stylesheet" />
+    </head>
 
-        <a>@Html.ActionLink("A", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[0].IsRight }))  @Model.Answers[0].AnswerContent</a>
+    <body>
+        <QuestionBox>
+            <h5>Question @Model.Id </h5>
+            <div class="text1">
 
+                <Question class="col-sm-2">
+                    @Model.QuestionContent
+                </Question>
 
-        <hr />
-
-
-        <a>@Html.ActionLink("B", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[1].IsRight }))  @Model.Answers[1].AnswerContent</a>
-
-
-        <hr />
-
-
-        <a>@Html.ActionLink("C", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[2].IsRight }))  @Model.Answers[2].AnswerContent</a>
+                <hr />
 
 
-
-        <hr />
-
-        <a>@Html.ActionLink("D", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[3].IsRight }))  @Model.Answers[3].AnswerContent</a>
-
-        <hr />
-        <hr />
-        <hr />
-
-        <a>@Html.ActionLink("50:50", "TipAction", "Game", new Tip { FiftyFifty = true, Audience = false, Friend = false })</a>&nbsp;
-        <a>@Html.ActionLink("Adience", "TipAction", "Game", new Tip { FiftyFifty = false, Audience = true, Friend = false })</a>&nbsp;
-        <a>@Html.ActionLink("Friend", "TipAction", "Game", new Tip { FiftyFifty = false, Audience = false, Friend = true })</a>
-
-        <hr />
-
-        <a>@Html.ActionLink("History", "HistoryView", "Game", new History { CorrectAnswers = Model.Id-1, Money = 0, StartDate = DateTime.Now })</a>
-        <a>@Html.ActionLink(@Model.TakeMoney, "TakeMoneyView", "Game")</a>
-    </div>
-
-    <h3>@Model.suggestion</h3>
+                @{
+                    if (Model.Answers[0].AnswerContent != "")
+                    {
+                        <a>@Html.ActionLink("A", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[0].IsRight }))  @Model.Answers[0].AnswerContent</a>
 
 
+                        <hr />
+                    }
+
+
+                    if (Model.Answers[1].AnswerContent != "")
+                    {
+                        <a>@Html.ActionLink("B", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[1].IsRight }))  @Model.Answers[1].AnswerContent</a>
+
+
+                        <hr />
+                    }
+
+
+                    if (Model.Answers[2].AnswerContent != "")
+                    {
+                        <a>@Html.ActionLink("C", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[2].IsRight }))  @Model.Answers[2].AnswerContent</a>
+
+                        <hr />
+                    }
+
+                    if (Model.Answers[3].AnswerContent != "")
+                    {
+                        <a>@Html.ActionLink("D", "CheckAnswer", "Game", new Answer { IsRight = Model.Answers[3].IsRight }))  @Model.Answers[3].AnswerContent</a>
+
+                        <hr />
+                        <hr />
+                        <hr />
+                    }
+
+                }
+</QuestionBox>
+
+
+
+
+        <TipBox>
+            <h4>Tips</h4>
+            @{
+                if (Model.TipsIndicator[0])
+                {<tipButton class="form-group">@Html.ActionLink("50:50", "TipAction", "Game", new Tip { FiftyFifty = true, Audience = false, Friend = false })</tipButton>}
+
+                if (Model.TipsIndicator[1])
+                {<tipButton class="form-group">@Html.ActionLink("Audience", "TipAction", "Game", new Tip { FiftyFifty = false, Audience = true, Friend = false })</tipButton>}
+
+                if(Model.TipsIndicator[2])
+                {<tipButton class="form-group">@Html.ActionLink("Friend", "TipAction", "Game", new Tip { FiftyFifty = false, Audience = false, Friend = true })</tipButton>}
+            }
+        </TipBox>
+
+
+        <tipButton class="HistoryButton">@Html.ActionLink("History", "HistoryView", "Game", new History { CorrectAnswers = Model.Id - 1, Money = 0, StartDate = DateTime.Now })</tipButton>
+        @if (Model.TakeMoney != "")
+        {
+            <tipButton class="TakeMoneyButton">@Html.ActionLink(@Model.TakeMoney, "TakeMoneyView", "Game")</tipButton>
+}
+        <SuggestBox >
+            @{
+                if (Model.suggestion == null)
+                {<h3>Sorry but you have  already used that tip</h3>}
+                else
+                {<h3>@Model.suggestion</h3>}
+            }
+        </SuggestBox>
+
+    </body>
+
+ </html>

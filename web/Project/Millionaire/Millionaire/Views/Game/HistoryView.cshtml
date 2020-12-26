@@ -4,21 +4,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>History</h1>
-<hr />
-<hr />
 
-<h4>Correct answers: </h4>
-@Model.CorrectAnswers
-<h4>Money won: </h4>@Model.Money
-<h4>Start Date: </h4>@Model.StartDate.Year:@Model.StartDate.Month:@Model.StartDate.Day
 
-<hr />
-<hr />
-<hr />
+<QuestionBox>
+    <h1>History</h1>
+    <hr />
+    <hr />
 
-<a>@Html.ActionLink(Model.ReturnGamePage, "Game", "Game")</a>
-<a>@Html.ActionLink(Model.ReturnWonPage, "TakeMoneyView", "Game")</a>
-<a>@Html.ActionLink(Model.ReturnLostPage, "Lost", "Game")</a>
+    <div class="form-group">
+        <h4>Correct answers: </h4>
+        <h6>@Model.CorrectAnswers</h6>
+    </div>
 
+    <div class="form-group">
+        <h4>Money won: </h4>
+        <h6>@Model.Money</h6>
+    </div>
+
+    <div class="form-group">
+        <h4>Start Date: </h4>
+        <h6>@Model.StartDate.Year:@Model.StartDate.Month:@Model.StartDate.Day</h6>
+    </div>
+        <hr />
+        <hr />
+        <hr />
+
+    @{ 
+        if (Model.ReturnGamePage != "") { <tipButton>@Html.ActionLink(Model.ReturnGamePage, "Game", "Game")</tipButton>}
+           
+        if (Model.ReturnWonPage != "") { <tipButton>@Html.ActionLink(Model.ReturnWonPage, "TakeMoneyView", "Game")</tipButton>}
+       
+        if (Model.ReturnLostPage != ""){ <tipButton>@Html.ActionLink(Model.ReturnLostPage, "Lost", "Game")</tipButton>}
+    }
+</QuestionBox>
 
